@@ -1,0 +1,1718 @@
+<!-- RUMAH KILAT - House Cleaning Service, HTML ISSUE: upload image, 1 image semua produk, per item harus pilih opsi, cursor pointer ketika hovering, tabel booking putih ketika dark mode-- -->
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumah Kilat - House Cleaning Service</title>
+    <link rel="icon" href="img-kilat.png" type="image/png">
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="RUMAH_KILAT_CLAUDE.css">
+
+    <style>
+        /* Inline overrides for SPA */
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .booking-progress { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .booking-progress .step { flex: 1; height: 4px; border-radius: 2px; background: var(--border-color); transition: background 0.4s; }
+        .booking-progress .step.done { background: var(--azure); }
+    </style>
+</head>
+<body data-theme="light">
+
+<!-- ===================== NAVBAR ======================== -->
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#" onclick="showPage('home'); return false;">
+            <i class="fa-solid fa-house-chimney-window me-2" style="color:var(--azure)"></i>RUMAH <span>KILAT</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" style="border-color:rgba(255,255,255,0.2)">
+            <i class="fa-solid fa-bars" style="color:#fff"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto align-items-center gap-1">
+                <li class="nav-item"><a class="nav-link" href="#" id="nav-home" onclick="showPage('home'); return false;">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="nav-review" onclick="showPage('review'); return false;">Review</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="nav-products" onclick="showPage('products'); return false;">Our Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="nav-membership" onclick="showPage('membership'); return false;">Membership</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="nav-how-it-works" onclick="showPage('how-it-works'); return false;">How it Works</a></li>
+                <li class="nav-item ms-lg-2 my-1 my-lg-0">
+                    <button class="btn btn-book-now pulse-azure" id="nav-booking-btn" onclick="showPage('booking')">
+                        <i class="fa-solid fa-calendar-check me-1"></i> Book Now!
+                    </button>
+                </li>
+                <li class="nav-item ms-lg-1">
+                    <button class="btn btn-theme-toggle" onclick="toggleMode()" id="themeBtn" title="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== MAIN WRAPPER ======================== -->
+<main>
+
+<!-- ========================================================= -->
+<!-- PAGE: HOME                                                -->
+<!-- ========================================================= -->
+<div id="page-home" class="page-section active fade-in">
+
+    <!-- Hero -->
+    <section id="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="container py-5">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6 hero-content">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-star-of-life me-1" style="font-size:0.6rem"></i>
+                        Jasa Perawatan &amp; Renovasi Profesional
+                    </div>
+                    <h1 class="display-headline hero-headline mb-3">
+                        Where Precision<br>
+                        <span class="text-azure">Meets Perfection</span>
+                    </h1>
+                    <p class="hero-subtitle mb-4 pe-lg-4">
+                        Platform jasa perawatan &amp; renovasi rumah berbasis luas area (m²). Transparan, modern, dan dihitung langsung.
+                    </p>
+                    <div class="hero-cta d-flex flex-wrap gap-3">
+                        <button class="btn btn-book-now btn-lg shadow" onclick="showPage('booking')">
+                            Hitung Harga Sekarang <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                    <!-- Stats -->
+                    <div class="hero-stats d-flex flex-wrap gap-3 mt-5">
+                        <div class="stat-badge">
+                            <span class="stat-num">10+</span>
+                            <span class="stat-label">Jenis Layanan</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-num">500+</span>
+                            <span class="stat-label">Pelanggan Puas</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-num">4.5 ★</span>
+                            <span class="stat-label">Rating Rata-rata</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image-wrap">
+                    <div class="hero-image-frame image-placeholder" style="height: 430px;">
+                        <img id="heroImg" alt="Hero Image" style="display:block;" src="img-kantor-pusat.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Quick Services Preview -->
+    <section class="section-gap" style="background:var(--bg-section)">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Apa yang kami tawarkan</div>
+                <h2 class="h1">Layanan Unggulan Kami</h2>
+                <p class="text-muted-custom mt-2">Solusi lengkap untuk hunian Anda dari bersih hingga renovasi total</p>
+            </div>
+            <div class="row g-3" id="homeServiceGrid"></div>
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-azure px-4" onclick="showPage('products')">
+                    Lihat Semua Layanan <i class="fa-solid fa-arrow-right ms-1"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section-gap">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-5 reveal">
+                    <div class="section-subtitle mb-2">Mengapa Rumah Kilat?</div>
+                    <h2 class="h1 mb-4">Presisi dalam setiap detail pekerjaan</h2>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h6 class="fw-700 mb-1" style="font-weight:700">Harga Transparan</h6>
+                                <p class="text-muted-custom mb-0" style="font-size:0.85rem">Tidak ada biaya tersembunyi. Semua harga berdasarkan luas m² yang tertera.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <h6 class="fw-700 mb-1" style="font-weight:700">Tim Profesional Bersertifikat</h6>
+                                <p class="text-muted-custom mb-0" style="font-size:0.85rem">Tenaga ahli terlatih dengan SOP keamanan dan kebersihan ketat.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div>
+                                <h6 class="fw-700 mb-1" style="font-weight:700">Garansi Pengerjaan</h6>
+                                <p class="text-muted-custom mb-0" style="font-size:0.85rem">Semua layanan dilengkapi garansi. Tidak puas? Kami kerjakan ulang.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="image-placeholder" style="height:200px;border-radius:var(--radius-lg)">
+                                <img id="galleryImg0" alt="" style="display:block" src="img-test1.jpg">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="image-placeholder" style="height:200px;border-radius:var(--radius-lg)">
+                                <img id="galleryImg1" alt="" style="display:block" src="img-test2.jpg">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="image-placeholder" style="height:220px;border-radius:var(--radius-lg)">
+                                <img id="galleryImg2" alt="" style="display:block" src="img-pegawai.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="section-gap" style="background:var(--bg-section)">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Kantor Kami</div>
+                <h2 class="h1">Lokasi Rumah Kilat</h2>
+                <p class="text-muted-custom mt-2">Kunjungi kami atau konsultasi langsung di lokasi terdekat</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 reveal">
+                    <a href="https://maps.app.goo.gl/zcbn5ii92QuNk88q9" target="_blank" class="location-card h-100 d-block">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="card-icon-wrap"><i class="fa-solid fa-building"></i></div>
+                            <div>
+                                <div class="chip chip-azure mb-1">Kantor Pusat</div>
+                                <h5 class="mb-0" style="font-size:1rem">Malang — Blimbing</h5>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom mb-3" style="font-size:0.85rem">
+                            Jl. Ahmad Yani No.15, Blimbing, Kota Malang, Jawa Timur, Indonesia 65126
+                        </p>
+                        <div class="map-embed-wrap mt-2">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Jl.+Ahmad+Yani+No.15,+Blimbing,+Kota+Malang&output=embed"
+                                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mt-3 text-azure" style="font-size:0.82rem;font-weight:600">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka di Google Maps
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 reveal">
+                    <a href="https://maps.app.goo.gl/AExFPJvr7gksPx6QA" target="_blank" class="location-card h-100 d-block">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="card-icon-wrap"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div>
+                                <div class="chip chip-azure mb-1">Cabang Utama</div>
+                                <h5 class="mb-0" style="font-size:1rem">Malang — Lowokwaru</h5>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom mb-3" style="font-size:0.85rem">
+                            Jl. Terusan Piranha Atas No.1B, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur
+                        </p>
+                        <div class="map-embed-wrap mt-2">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Jl.+Terusan+Piranha+Atas+No.1B,+Tunjungsekar,+Lowokwaru,+Malang&output=embed"
+                                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mt-3 text-azure" style="font-size:0.82rem;font-weight:600">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka di Google Maps
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section style="background:var(--azure);padding:3rem 0">
+        <div class="container text-center">
+            <h2 style="color:#fff;font-family:'Playfair Display',serif;font-size:2rem" class="mb-3">Siap transformasi hunian Anda?</h2>
+            <p style="color:rgba(255,255,255,0.8)" class="mb-4">Hubungi kami lebih lanjut!</p>
+            <button class="btn btn-lg" style="background:#fff;color:var(--azure);font-weight:700;border-radius:50px;padding:0.75rem 2.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.15)" onclick="window.open('https://wa.me/6285791127578', '_blank')">
+                WhatsApp <i class="fa-brands fa-whatsapp ms-2"></i>
+            </button>
+            <button class="btn btn-lg" style="background:#fff;color:var(--azure);font-weight:700;border-radius:50px;padding:0.75rem 2.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.15)" onclick="window.open('https://instagram.com/iqqryz', '_blank')">
+                Instagram <i class="fa-brands fa-instagram ms-2"></i>
+            </button>
+        </div>
+    </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ========================================================= -->
+<!-- PAGE: REVIEW                                               -->
+<!-- ========================================================= -->
+<div id="page-review" class="page-section fade-in">
+    <section class="section-gap">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end section-header mb-4">
+                <div>
+                    <div class="section-subtitle mb-2">Apa Kata Mereka</div>
+                    <h2 class="h1 mb-0">Testimoni Pelanggan</h2>
+                </div>
+                <button class="btn btn-azure mt-3" onclick="toggleReviewForm()">
+                    <i class="fa-solid fa-pen-to-square me-2"></i>Tulis Review Anda
+                </button>
+            </div>
+
+            <div class="row g-4" id="reviewGrid">
+                <!-- Static reviews -->
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Pengerjaan deep cleaning sebelum pindahan sangat luar biasa bersih. Harga transparan tanpa biaya tersembunyi!"</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Budi Santoso</div>
+                        <div class="reviewer-service">Deep Cleaning · Gold Member</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Ganti lantai vinyl jadi sangat praktis. Tukangnya profesional dan sangat presisi sesuai tagline-nya."</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Anita Wijaya</div>
+                        <div class="reviewer-service">Floor Replacement · Silver Member</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Sistem invoice dan bookingnya canggih banget. Sangat memudahkan untuk orang sibuk yang butuh jasa renovasi."</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Kevin Pratama</div>
+                        <div class="reviewer-service">Repaint + Wallpaper · Bronze Member</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Sofa dan karpet jadi bersih seperti baru! Tim datang on-time dan sangat berhati-hati dengan furniture saya."</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Rina Dewi</div>
+                        <div class="reviewer-service">Furniture Cleaning · Platinum Member</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Instalasi AC dan kamera CCTV selesai dalam sehari. Rapi sekali, tidak ada kabel yang berantakan. Recommended!"</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Dimas Putra</div>
+                        <div class="reviewer-service">Electronic Installation · Diamond Member</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card h-100">
+                        <div class="review-stars mb-3">★★★★★</div>
+                        <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"Taman rumah saya disulap jadi indah banget! Landscape maintenance-nya detail dan hasilnya memuaskan."</p>
+                        <hr style="border-color:var(--border-color);margin:1rem 0">
+                        <div class="reviewer-name">Sari Mulyani</div>
+                        <div class="reviewer-service">Landscape Maintenance · Gold Member</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Form -->
+            <div id="reviewFormWrap" style="display:none;margin-top:3rem" class="fade-in">
+                <div class="custom-card p-4 p-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="card-icon-wrap"><i class="fa-solid fa-star"></i></div>
+                        <div>
+                            <h4 class="mb-0">Experience Feedback</h4>
+                            <p class="text-muted-custom mb-0" style="font-size:0.83rem">Rumah Kilat — Bantu kami terus berkembang</p>
+                        </div>
+                    </div>
+
+                    <form id="customerReviewForm" onsubmit="submitReview(event)" novalidate>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nama Lengkap *</label>
+                                <input type="text" class="form-control" id="rv_name" required placeholder="Nama Anda">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="rv_email" placeholder="email@contoh.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">No. WhatsApp</label>
+                                <input type="text" class="form-control" id="rv_wa" placeholder="08xx-xxxx-xxxx">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">No. Invoice / ID Transaksi *</label>
+                                <input type="text" class="form-control" id="rv_invoice" required placeholder="RK-2026-XXXX">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Layanan yang Digunakan</label>
+                            <div class="row g-2">
+                                <div class="col-6 col-md-4" id="rv_services_check">
+                                    <!-- Generated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rating Keseluruhan *</label>
+                            <div class="star-rating" id="overallStar">
+                                <span class="star" data-val="1">&#9733;</span>
+                                <span class="star" data-val="2">&#9733;</span>
+                                <span class="star" data-val="3">&#9733;</span>
+                                <span class="star" data-val="4">&#9733;</span>
+                                <span class="star" data-val="5">&#9733;</span>
+                            </div>
+                            <input type="hidden" id="rv_rating" value="0">
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-3 col-6">
+                                <label class="form-label">Ketepatan Waktu</label>
+                                <select class="form-select" id="rv_time">
+                                    <option value="5">5 — Sangat Baik</option>
+                                    <option value="4">4 — Baik</option>
+                                    <option value="3">3 — Cukup</option>
+                                    <option value="2">2 — Kurang</option>
+                                    <option value="1">1 — Buruk</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label class="form-label">Kerapian Hasil</label>
+                                <select class="form-select" id="rv_neat">
+                                    <option value="5">5 — Sangat Baik</option>
+                                    <option value="4">4 — Baik</option>
+                                    <option value="3">3 — Cukup</option>
+                                    <option value="2">2 — Kurang</option>
+                                    <option value="1">1 — Buruk</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label class="form-label">Profesionalisme</label>
+                                <select class="form-select" id="rv_prof">
+                                    <option value="5">5 — Sangat Baik</option>
+                                    <option value="4">4 — Baik</option>
+                                    <option value="3">3 — Cukup</option>
+                                    <option value="2">2 — Kurang</option>
+                                    <option value="1">1 — Buruk</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <label class="form-label">Harga vs Kualitas</label>
+                                <select class="form-select" id="rv_price">
+                                    <option value="5">5 — Sangat Baik</option>
+                                    <option value="4">4 — Baik</option>
+                                    <option value="3">3 — Cukup</option>
+                                    <option value="2">2 — Kurang</option>
+                                    <option value="1">1 — Buruk</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Pengalaman Anda Menggunakan Rumah Kilat *</label>
+                            <textarea class="form-control" id="rv_main" rows="3" minlength="30" required placeholder="Minimal 30 karakter — ceritakan pengalaman Anda..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Yang Paling Anda Sukai</label>
+                            <textarea class="form-control" id="rv_like" rows="2" placeholder="Apa yang membuat Anda terkesan?"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Saran untuk Peningkatan</label>
+                            <textarea class="form-control" id="rv_suggest" rows="2" placeholder="Masukan membantu kami berkembang..."></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Publikasi Review</label>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rv_pub" checked>
+                                    <label class="form-check-label" for="rv_pub" style="font-size:0.85rem">Saya bersedia review ini ditampilkan di website Rumah Kilat</label>
+                                </div>
+                                <div class="d-flex gap-3 ms-0" id="pubNameOptions">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="pubName" id="rv_showname" value="name" checked>
+                                        <label class="form-check-label" for="rv_showname" style="font-size:0.85rem">Tampilkan nama saya</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="pubName" id="rv_anon" value="anon">
+                                        <label class="form-check-label" for="rv_anon" style="font-size:0.85rem">Tampilkan sebagai anonim</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 justify-content-end">
+                            <button type="button" class="btn btn-outline-secondary" onclick="toggleReviewForm()">Batal</button>
+                            <button type="reset" class="btn btn-outline-azure">Reset</button>
+                            <button type="submit" class="btn btn-azure px-4">
+                                <i class="fa-solid fa-paper-plane me-1"></i> Submit Review
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div><!-- /page-review -->
+
+
+<!-- ========================================================= -->
+<!-- PAGE: OUR PRODUCTS                                         -->
+<!-- ========================================================= -->
+<div id="page-products" class="page-section fade-in">
+    <section class="section-gap">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Portofolio Layanan</div>
+                <h2 class="h1">Semua Layanan Kami</h2>
+                <p class="text-muted-custom mt-2 mx-auto" style="max-width:560px">
+                    Dari pembersihan rutin hingga renovasi total. Harga berbasis luas area (m²) untuk transparansi penuh.
+                </p>
+            </div>
+            <div class="row g-4" id="fullProductGrid"></div>
+        </div>
+    </section>
+</div><!-- /page-products -->
+
+
+<!-- ========================================================= -->
+<!-- PAGE: MEMBERSHIP                                           -->
+<!-- ========================================================= -->
+<div id="page-membership" class="page-section fade-in">
+    <section class="section-gap">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Rumah Kilat Privilege</div>
+                <h2 class="h1">Program Membership</h2>
+                <p class="fst-italic text-muted-custom mt-1 mb-3">"Excellence Reserved for Our Valued Clients."</p>
+                <div class="chip chip-azure mx-auto">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Level dihitung berdasarkan <strong>jumlah transaksi jasa</strong> — bukan nominal pembayaran
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Bronze -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="member-card bronze-card p-4 h-100 reveal">
+                        <div class="member-badge badge-bronze"><i class="fa-solid fa-medal me-1"></i>BRONZE</div>
+                        <div class="member-title">Bronze</div>
+                        <div class="member-range"></i>1 — 10 Transaksi</div>
+                        <ul class="member-benefit-list">
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Diskon 3% untuk jasa cleaning</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Prioritas booking (1 hari lebih cepat)</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Reminder jadwal perawatan berkala</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Garansi pengerjaan ulang 24 jam</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Silver -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="member-card silver-card p-4 h-100 reveal">
+                        <div class="member-badge badge-silver"><i class="fa-solid fa-award me-1"></i>SILVER</div>
+                        <div class="member-title">Silver</div>
+                        <div class="member-range"></i>11 — 20 Transaksi</div>
+                        <ul class="member-benefit-list">
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Diskon 5% semua jasa cleaning</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Gratis biaya survey 1x per tahun</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Garansi pengerjaan ulang 48 jam</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Merchandise eksklusif (Tumbler/Cleaning Kit)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gold -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="member-card gold-card p-4 h-100 reveal">
+                        <div class="member-badge badge-gold"><i class="fa-solid fa-trophy me-1"></i>GOLD</div>
+                        <div class="member-title">Gold</div>
+                        <div class="member-range"></i>21 — 30 Transaksi</div>
+                        <ul class="member-benefit-list">
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Diskon 8% semua jasa</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Gratis 1x Deep Cleaning (maks 30 m²/tahun)</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Garansi pengerjaan ulang 72 jam</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Asuransi kerusakan s/d Rp 1.000.000</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Souvenir eksklusif tahunan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Platinum -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="member-card platinum-card p-4 h-100 reveal">
+                        <div class="member-badge badge-platinum"><i class="fa-solid fa-crown me-1"></i>PLATINUM</div>
+                        <div class="member-title">Platinum</div>
+                        <div class="member-range"></i>31 — 50 Transaksi</div>
+                        <ul class="member-benefit-list">
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Diskon 12% semua jasa</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Gratis biaya survey tanpa batas</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Prioritas eksekusi proyek</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Asuransi s/d Rp 3.000.000</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Konsultasi renovasi gratis</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Birthday &amp; Annual Appreciation Gift</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Diamond -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="member-card diamond-card p-4 h-100 reveal">
+                        <div class="member-badge badge-diamond"><i class="fa-solid fa-gem me-1"></i>DIAMOND</div>
+                        <div class="member-title">Diamond</div>
+                        <div class="member-range"></i>50+ Transaksi</div>
+                        <ul class="member-benefit-list">
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Diskon 15% semua jasa</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Dedicated Account Officer</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Garansi pengerjaan ulang 7 hari</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Asuransi s/d Rp 5.000.000</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Gratis 1x cleaning/tahun (maks 50 m²)</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Undangan event eksklusif Rumah Kilat</li>
+                            <li><i class="fa-solid fa-check benefit-icon"></i>Gift premium tahunan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Note -->
+            <div class="divider-azure"></div>
+            <div class="custom-card p-4 mt-2">
+                <h5 class="mb-3"><i class="fa-solid fa-circle-info text-azure me-2"></i>Catatan Penting</h5>
+                <div class="row g-3" style="font-size:0.85rem;color:var(--text-muted)">
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Diskon hanya berlaku untuk jasa, bukan material mahal</div>
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Gratis layanan dibatasi luas maksimal yang ditentukan</div>
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Asuransi hanya untuk kerusakan akibat tim Rumah Kilat</div>
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Membership berlaku 1 tahun &amp; harus aktif setiap tahun</div>
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Benefit aktif setelah transaksi pertama selesai</div>
+                    <div class="col-md-6"><i class="fa-solid fa-check text-azure me-2"></i>Pembatalan H-1 tanpa biaya; hari-H ada potensi biaya operasional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div><!-- /page-membership -->
+
+
+<!-- ========================================================= -->
+<!-- PAGE: HOW IT WORKS                                         -->
+<!-- ========================================================= -->
+<div id="page-how-it-works" class="page-section fade-in">
+    <section class="section-gap">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Prosedur Layanan</div>
+                <h2 class="h1">How It Works!</h2>
+                <p class="text-muted-custom mt-2 mx-auto" style="max-width:540px">Proses booking hingga selesai yang mudah, transparan, dan terjamin.</p>
+            </div>
+
+            <div class="timeline-wrap">
+                <!-- Step 1 -->
+                <div class="row align-items-center timeline-item reveal">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">1</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-laptop"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Konsultasi &amp; Booking</h5>
+                                    <p class="text-muted-custom mb-0" style="font-size:0.87rem">Akses website Rumah Kilat, pilih layanan yang dibutuhkan, masukkan luas area (m²), dan sistem otomatis menghitung estimasi biaya. Isi data diri &amp; alamat. Booking dikonfirmasi via WhatsApp / Email resmi.</p>
+                                    <div class="chip chip-azure mt-2"><i class="fa-solid fa-circle-info"></i>Harga tampil adalah estimasi awal sebelum survey lokasi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.1s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">2</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-map-pin"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Survey Lokasi (Wajib)</h5>
+                                    <p class="text-muted-custom mb-2" style="font-size:0.87rem">Tim Rumah Kilat mengunjungi lokasi, mengecek kondisi aktual, menilai tingkat kesulitan pekerjaan.</p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="chip" style="background:rgba(40,167,69,0.1);color:#28a745"><i class="fa-solid fa-circle-check"></i>Normal — Harga sesuai estimasi</span>
+                                        <span class="chip" style="background:rgba(255,193,7,0.1);color:#e0a800"><i class="fa-solid fa-triangle-exclamation"></i>Kondisi Berat — +5% dari total layanan</span>
+                                    </div>
+                                    <p class="text-muted-custom mb-0 mt-2" style="font-size:0.82rem">Konsumen menerima revisi final quotation dan menyetujui sebelum pekerjaan dimulai.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.2s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">3</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-credit-card"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Konfirmasi &amp; Pembayaran</h5>
+                                    <p class="text-muted-custom mb-2" style="font-size:0.87rem">Setujui quotation final dan lakukan pembayaran DP. Invoice resmi dikirim dalam bentuk PDF.</p>
+                                    <div class="d-flex flex-wrap gap-2" style="font-size:0.8rem;color:var(--text-muted)">
+                                        <span><i class="fa-solid fa-building-columns text-azure me-1"></i>Transfer Bank</span>
+                                        <span><i class="fa-solid fa-wallet text-azure me-1"></i>E-Wallet</span>
+                                        <span><i class="fa-solid fa-handshake text-azure me-1"></i>Sesuai Kebijakan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.3s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">4</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-helmet-safety"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Pelaksanaan Pekerjaan</h5>
+                                    <p class="text-muted-custom mb-0" style="font-size:0.87rem">Tim profesional datang tepat waktu, menggunakan peralatan standar, mengikuti SOP keamanan &amp; kebersihan, menjaga properti &amp; privasi. Timeline &amp; progress update tersedia untuk proyek renovasi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.4s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">5</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-clipboard-check"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Quality Check &amp; Serah Terima</h5>
+                                    <p class="text-muted-custom mb-0" style="font-size:0.87rem">Pengecekan bersama konsumen. Hasil dipastikan sesuai kesepakatan. Kekurangan ringan diperbaiki saat itu juga.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 6 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.5s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">6</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Garansi Layanan</h5>
+                                    <p class="text-muted-custom mb-2" style="font-size:0.87rem">Garansi berlaku sesuai kategori layanan dan level membership.</p>
+                                    <div class="row g-2" style="font-size:0.82rem">
+                                        <div class="col-md-6"><i class="fa-solid fa-broom text-azure me-1"></i><strong>Cleaning:</strong> Garansi 1–3 hari</div>
+                                        <div class="col-md-6"><i class="fa-solid fa-wrench text-azure me-1"></i><strong>Renovasi &amp; Instalasi:</strong> Garansi 7–14 hari</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 7 -->
+                <div class="row align-items-center timeline-item reveal" style="animation-delay:0.6s">
+                    <div class="col-md-1 text-center mb-3 mb-md-0"><div class="timeline-step-num">7</div></div>
+                    <div class="col-md-11">
+                        <div class="timeline-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid fa-star"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Review &amp; Evaluasi</h5>
+                                    <p class="text-muted-custom mb-0" style="font-size:0.87rem">Konsumen menerima link/form untuk review. Penilaian bintang (1–5), testimoni tertulis, dan saran masukan. Review ditampilkan di halaman Review (dengan izin konsumen). Transaksi otomatis terakumulasi ke sistem membership.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transparency Note -->
+            <div class="divider-azure"></div>
+            <div class="row g-4 mt-1">
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center reveal">
+                        <i class="fa-solid fa-eye text-azure mb-3" style="font-size:2rem"></i>
+                        <h5>Transparansi Harga</h5>
+                        <p class="text-muted-custom mb-0" style="font-size:0.85rem">Semua harga berdasarkan m² dan tampil terbuka di website. Tidak ada biaya tersembunyi.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center reveal">
+                        <i class="fa-solid fa-calendar-xmark text-azure mb-3" style="font-size:2rem"></i>
+                        <h5>Kebijakan Pembatalan</h5>
+                        <p class="text-muted-custom mb-0" style="font-size:0.85rem">H-1: tanpa biaya. Hari-H: potensi biaya operasional. Renovasi berjalan: sesuai kontrak.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center reveal">
+                        <i class="fa-solid fa-trophy text-azure mb-3" style="font-size:2rem"></i>
+                        <h5>Sistem Membership</h5>
+                        <p class="text-muted-custom mb-0" style="font-size:0.85rem">Dihitung dari jumlah transaksi, bukan nominal. Benefit aktif sejak transaksi pertama selesai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div><!-- /page-how-it-works -->
+
+
+<!-- ========================================================= -->
+<!-- PAGE: BOOKING                                              -->
+<!-- ========================================================= -->
+<div id="page-booking" class="page-section fade-in">
+    <section class="section-gap">
+        <div class="container">
+            <div class="text-center section-header">
+                <div class="section-subtitle mb-2">Mulai Sekarang</div>
+                <h2 class="h1 text-azure">Estimasi Biaya &amp; Booking</h2>
+                <p class="text-muted-custom mt-2">Pilih layanan, masukkan area, dan harga terhitung otomatis</p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Left: Form -->
+                <div class="col-lg-5">
+                    <div class="booking-panel">
+                        <h5 class="mb-4" style="font-family:'Playfair Display',serif">Data Pemesanan</h5>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nama Pelanggan</label>
+                            <input type="text" id="bk_name" class="form-control" placeholder="Nama lengkap Anda">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">No. Telepon / WhatsApp</label>
+                            <input type="text" id="bk_phone" class="form-control" placeholder="08xx-xxxx-xxxx">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Alamat Lokasi</label>
+                            <input type="text" id="bk_address" class="form-control" placeholder="Jl. Nama Jalan No. XX, Kota">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Booking</label>
+                            <input type="date" id="bk_date" class="form-control" min="">
+                        </div>
+
+                        <div class="divider-azure" style="margin:1.5rem 0"></div>
+
+                        <h5 class="mb-3" style="font-family:'Playfair Display',serif">Tambah Layanan</h5>
+
+                        <div class="mb-3">
+                            <label class="form-label">Pilih Layanan</label>
+                            <select id="bk_service" class="form-select" onchange="onServiceChange()">
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Area input (default) -->
+                        <div id="areaInputWrap" class="mb-3">
+                            <label class="form-label">Luas Area (m²)</label>
+                            <input type="number" id="bk_area" class="form-control" placeholder="Contoh: 60" min="1">
+                        </div>
+
+                        <!-- Item-based pricing (shown for specific services) -->
+                        <div id="itemInputWrap" class="mb-3" style="display:none">
+                            <div class="item-pricing-row">
+                                <label class="form-label"><i class="fa-solid fa-boxes-stacked text-azure me-1"></i>Rincian Item<br>
+                                *penetapan harga setelah pelaksanaan survey
+                                </label>
+                                <div id="itemOptionsContainer"></div>
+                                <div class="mt-2">
+                                    <label class="form-label">Jumlah Item</label>
+                                    <input type="number" id="bk_qty" class="form-control" placeholder="Jumlah unit / item" min="1" value="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-azure w-100 py-2 fw-semibold" onclick="addToCart()">
+                            <i class="fa-solid fa-plus me-2"></i>Tambah ke Estimasi
+                        </button>
+
+                        <div class="mt-4 p-3 rounded" style="background:var(--bg-section);border:1px solid var(--border-color)">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="bk_heavy" onchange="updateTotal()">
+                                <label class="form-check-label fw-semibold" for="bk_heavy" style="font-size:0.87rem">
+                                    <i class="fa-solid fa-triangle-exclamation text-warning me-1"></i> Kondisi Berat / Ekstra (+5%)
+                                </label>
+                            </div>
+                            <p class="mb-0 mt-1 text-muted-custom" style="font-size:0.75rem;padding-left:1.75rem">Berlaku jika hasil survey menemukan tingkat kesulitan di atas normal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Summary -->
+                <div class="col-lg-7">
+                    <div class="booking-panel h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h5 class="mb-0" style="font-family:'Playfair Display',serif">Rincian Estimasi Biaya</h5>
+                            <i class="fa-solid fa-receipt text-azure fs-5"></i>
+                        </div>
+
+                        <div class="table-responsive flex-grow-1">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Layanan</th>
+                                        <th>Detail</th>
+                                        <th class="text-end">Subtotal</th>
+                                        <th style="width:40px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartBody">
+                                    <tr id="emptyCartRow">
+                                        <td colspan="4" class="text-center py-5 text-muted-custom fst-italic">
+                                            <i class="fa-solid fa-basket-shopping fa-2x d-block mb-2 opacity-25"></i>
+                                            Belum ada layanan yang dipilih
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="rincian-box mt-4">
+                            <div class="total-row">
+                                <span class="text-muted-custom" style="font-size:0.87rem">Total Jasa</span>
+                                <span id="totalJasa" class="fw-semibold">Rp 0</span>
+                            </div>
+                            <div class="total-row" id="extraFeeRow" style="display:none;color:#e0a800">
+                                <span style="font-size:0.87rem"><i class="fa-solid fa-triangle-exclamation me-1"></i>Biaya Kondisi Berat (5%)</span>
+                                <span id="extraFeeAmt" class="fw-semibold">Rp 0</span>
+                            </div>
+                            <div class="total-row pt-2">
+                                <span class="fw-bold" style="font-size:0.95rem">TOTAL AKHIR</span>
+                                <span class="grand-total" id="grandTotal">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">Catatan Tambahan</label>
+                                <textarea id="bk_notes" class="form-control" rows="2" placeholder="Informasi tambahan untuk tim kami..."></textarea>
+                            </div>
+                            <button class="btn btn-book-now w-100 py-3 fw-bold fs-6" onclick="generatePDF()">
+                                <i class="fa-solid fa-file-pdf me-2"></i>Booking &amp; Generate Invoice PDF
+                            </button>
+                            <p class="text-center text-muted-custom mt-2" style="font-size:0.75rem">
+                                <i class="fa-solid fa-lock me-1"></i>Invoice PDF akan otomatis terunduh setelah booking dikonfirmasi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /row -->
+        </div>
+    </section>
+</div><!-- /page-booking -->
+
+</main><!-- /main -->
+
+
+<!-- ===================== FOOTER ======================== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-brand mb-3">
+                    <i class="fa-solid fa-house-chimney-window me-2" style="color:var(--azure)"></i>RUMAH <span>KILAT</span>
+                </div>
+                <p style="font-size:0.83rem;color:rgba(255,255,255,0.5);line-height:1.8">
+                    Platform jasa Perawatan &amp; Renovasi Rumah profesional berbasis luas area (m²). Simpel, transparan, dan modern.
+                </p>
+                <div class="d-flex gap-3 mt-3">
+                    <a href="https://wa.me/6285791127578" class="btn btn-sm btn-azure rounded-circle" style="width:38px;height:38px;display:flex;align-items:center;justify-content:center" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/iqqryz/" class="btn btn-sm rounded-circle" style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);color:#aaa" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@sideofhislife17" class="btn btn-sm rounded-circle" style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);color:#aaa" title="Facebook">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="footer-heading">Navigasi</div>
+                <a href="#" class="footer-link" onclick="showPage('home'); return false;">Home</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Our Products</a>
+                <a href="#" class="footer-link" onclick="showPage('membership'); return false;">Membership</a>
+                <a href="#" class="footer-link" onclick="showPage('how-it-works'); return false;">How it Works</a>
+                <a href="#" class="footer-link" onclick="showPage('review'); return false;">Review</a>
+                <a href="#" class="footer-link" onclick="showPage('booking'); return false;">Book Now</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-6">
+                <div class="footer-heading">Layanan</div>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Fast Cleaning</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Deep Cleaning</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Repaint</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Floor Replacement</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">Wallpaper</a>
+                <a href="#" class="footer-link" onclick="showPage('products'); return false;">+ Layanan Lainnya</a>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-heading">Hubungi Kami</div>
+                <a href="https://wa.me/6285791127578" class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+62 812-3456-7890</span>
+                </a>
+                <a href="https://mail.google.com" class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@rumahkilat.id</span>
+                </a>
+                <a href="https://maps.app.goo.gl/zcbn5ii92QuNk88q9" target="_blank" class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Jl. Ahmad Yani No.15, Blimbing, Kota Malang, Jawa Timur 65126</span>
+                </a>
+                <a href="https://maps.app.goo.gl/AExFPJvr7gksPx6QA" target="_blank" class="footer-contact-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Jl. Terusan Piranha Atas No.1B, Tunjungsekar, Lowokwaru, Malang</span>
+                </a>
+                <div class="mt-2" style="font-size:0.78rem;color:rgba(255,255,255,0.35)">
+                    <i class="fa-solid fa-clock text-azure me-1"></i> Senin – Sabtu: 08.00 – 17.00 WIB
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider mt-4 mb-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <span class="footer-bottom-text">&copy; 2026 Rumah Kilat. All Rights Reserved. Where Precision Meets Perfection.</span>
+            <div class="d-flex gap-3">
+                <a href="terms.html" class="footer-bottom-text">Terms &amp; Conditions</a>
+                <a href="privacy.html" class="footer-bottom-text">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===================== TOAST ======================== -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="mainToast" class="toast toast-custom" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex align-items-center p-3 gap-3">
+            <div id="toastIcon" class="text-azure fs-5"></div>
+            <div class="toast-body fw-semibold" id="toastMsg">Berhasil!</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SCRIPTS ======================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+/* ============================================================
+   RUMAH KILAT — Main JavaScript
+   ============================================================ */
+
+// --- DATA ---------------------------------------------------
+const services = [
+    {
+        id: 1, name: "Fast Cleaning", price: 25000, icon: "fa-broom",
+        unit: "m2",
+        desc: "Pembersihan umum rutin — sapu, pel, bersih debu ringan. Ramah untuk perawatan berkala.",
+        tag: "Cleaning",
+        image: "img-fast-cleaning.jpg"
+    },
+    {
+        id: 2, name: "Deep Cleaning", price: 35000, icon: "fa-hands-bubbles",
+        unit: "m2",
+        desc: "Pembersihan menyeluruh (debu konstruksi, noda sudut, interior & eksterior). Cocok sebelum/sesudah renovasi.",
+        tag: "Cleaning",
+        image: "img-deep-cleaning.jpg"
+    },
+    {
+        id: 3, name: "Furniture Cleaning", price: false, icon: "fa-couch",
+        unit: "item",
+        desc: "Bersihkan sofa, kursi, karpet, meja, kabinet dengan teknik khusus & alat profesional.",
+        tag: "Cleaning",
+        image: "img-furniture-cleaning.jpg",
+        itemOptions: [
+               
+        ]
+    },
+    {
+        id: 4, name: "Repaint", price: 85000, icon: "fa-paint-roller",
+        unit: "m2",
+        desc: "Pengecatan ulang dinding & plafon dengan cat kualitas menengah.",
+        tag: "Renovasi",
+        image: "img-repaint.jpg"
+    },
+    {
+        id: 5, name: "Floor Replacement", price: 275000, icon: "fa-layer-group",
+        unit: "m2",
+        desc: "Penggantian lantai (keramik / vinyl / laminate). Harga sudah termasuk bongkar & pasang.",
+        tag: "Renovasi",
+        image: "img-floor-replacement.jpg"
+    },
+    {
+        id: 6, name: "Wallpaper Installation", price: 120000, icon: "fa-scroll",
+        unit: "m2",
+        desc: "Pemasangan wallpaper interior dengan presisi tinggi — termasuk bahan & finishing rapi.",
+        tag: "Renovasi",
+        image: "img-wallpaper-installation.jpg"
+    },
+    {
+        id: 7, name: "Furniture Installation", price: false, icon: "fa-hammer",
+        unit: "item",
+        desc: "Perakitan & pemasangan furnitur built-in atau modular oleh tenaga ahli.",
+        tag: "Instalasi",
+        image: "img-furniture-installation.jpg",
+        itemOptions: [
+            
+        ]
+    },
+    {
+        id: 8, name: "Sanitation Installation", price: false, icon: "fa-bath",
+        unit: "item",
+        desc: "Instalasi sanitasi (kloset, wastafel, shower) termasuk pipa & fitting standar.",
+        tag: "Instalasi",
+        image: "img-sanitation-installation.jpg",
+        itemOptions: [
+            
+        ]
+    },
+    {
+        id: 9, name: "Electronic Installation", price: false, icon: "fa-plug",
+        unit: "item",
+        desc: "Instalasi listrik & perangkat elektronik (lighting, soket, smart device, AC).",
+        tag: "Instalasi",
+        image: "img-electronic-installation.jpg",
+        itemOptions: [
+            
+        ]
+    },
+    {
+        id: 10, name: "Landscape Maintenance", price: 45000, icon: "fa-leaf",
+        unit: "m2",
+        desc: "Perawatan taman & area luar rumah: rumput, pot tanaman, pruning, soil care.",
+        tag: "Outdoor",
+        image: "img-landscape-maintenance.jpg"
+    }
+];
+
+let cart = [];
+let reviewRating = 0;
+
+// --- INIT ---------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    setMinBookingDate();
+    renderHomeServiceGrid();
+    renderFullProductGrid();
+    populateServiceSelect();
+    populateReviewServiceChecks();
+    initStarRating();
+    initScrollReveal();
+    initNavbarScroll();
+    showPage('home');
+});
+
+// --- NAVIGATION SPA ----------------------------------------
+function showPage(pageId) {
+    document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + pageId);
+    if (!target) return;
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Update nav active state
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('page-active'));
+    const navEl = document.getElementById('nav-' + pageId);
+    if (navEl) navEl.classList.add('page-active');
+
+    // Close mobile menu
+    const navCollapse = document.getElementById('navbarMain');
+    if (navCollapse.classList.contains('show')) {
+        bootstrap.Collapse.getInstance(navCollapse)?.hide();
+    }
+}
+
+// --- DARK MODE ----------------------------------------------
+function toggleMode() {
+    const body = document.documentElement;
+    const icon = document.getElementById('themeIcon');
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    icon.className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+}
+
+// --- NAVBAR SCROLL EFFECT -----------------------------------
+function initNavbarScroll() {
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+}
+
+// --- SCROLL REVEAL ------------------------------------------
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// --- FORMAT CURRENCY ----------------------------------------
+function formatRp(n) {
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(n);
+}
+
+// --- DATE ---------------------------------------------------
+function setMinBookingDate() {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    document.getElementById('bk_date').min = today.toISOString().split('T')[0];
+    document.getElementById('bk_date').value = today.toISOString().split('T')[0];
+}
+
+// --- RENDER HOME SERVICE GRID --------------------------------
+function renderHomeServiceGrid() {
+    const grid = document.getElementById('homeServiceGrid');
+    const featured = services.slice(0, 6);
+    grid.innerHTML = featured.map(s => `
+        <div class="col-sm-6 col-lg-4 reveal">
+            <div class="custom-card p-4 d-flex align-items-start gap-3">
+                <div class="card-icon-wrap flex-shrink-0"><i class="fa-solid ${s.icon}"></i></div>
+                <div>
+                    <h6 style="font-weight:700;margin-bottom:0.25rem">${s.name}</h6>
+                    <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;line-height:1.5">${s.desc.slice(0, 70)}...</p>
+                    <span class="chip chip-azure">${s.unit === 'm2' ? formatRp(s.price) + ' / m²' : 'Per Item'}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    // Re-observe
+    setTimeout(initScrollReveal, 100);
+}
+
+// --- RENDER FULL PRODUCT GRID --------------------------------
+function renderFullProductGrid() {
+    const grid = document.getElementById('fullProductGrid');
+    grid.innerHTML = services.map((s, i) => `
+        <div class="col-sm-6 col-lg-4 reveal" style="animation-delay:${i * 0.05}s">
+            <div class="product-card">
+                <div class="product-img">
+                    <img id="prodImg${s.id}" alt="${s.name}" style="display:block" src="${s.image}">
+                    <div class="img-placeholder" id="prodPH${s.id}">
+                    </div>
+                    <span class="product-price-badge">${s.unit === 'm2' ? formatRp(s.price) + '/m²' : 'Per Item'}</span>
+                    <span style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.45);color:#fff;font-size:0.68rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:50px">${s.tag}</span>
+                </div>
+                <div class="product-body">
+                    <div class="product-name"><i class="fa-solid ${s.icon} text-azure me-2"></i>${s.name}</div>
+                    <div class="product-desc">${s.desc}</div>
+                    ${s.itemOptions ? `
+                    <div class="mt-2" style="font-size:0.78rem;color:var(--text-muted)">
+                        <strong style="color:var(--azure);display:block;margin-bottom:0.3rem">KONSULTASI LANJUT DENGAN KAMI</strong>
+                        ${s.itemOptions.map(opt => `<div>· ${opt.label}: <strong>${formatRp(opt.price)}</strong></div>`).join('')}
+                    </div>
+                    ` : ''}
+                    <div class="product-footer">
+                        <button class="btn btn-sm btn-azure" onclick="quickBook(${s.id})">
+                            <i class="fa-solid fa-calendar-plus me-1"></i>Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    setTimeout(initScrollReveal, 100);
+}
+
+function quickBook(serviceId) {
+    showPage('booking');
+    setTimeout(() => {
+        const select = document.getElementById('bk_service');
+        select.value = serviceId;
+        onServiceChange();
+    }, 200);
+}
+
+// --- POPULATE BOOKING SELECT --------------------------------
+function populateServiceSelect() {
+    const sel = document.getElementById('bk_service');
+    sel.innerHTML = services.map(s =>
+        `<option value="${s.id}">${s.name} ${s.unit === 'm2' ? '— ' + formatRp(s.price) + '/m²' : '— Per Item'}</option>`
+    ).join('');
+    onServiceChange();
+}
+
+function onServiceChange() {
+    const id = parseInt(document.getElementById('bk_service').value);
+    const svc = services.find(s => s.id === id);
+    const areaWrap = document.getElementById('areaInputWrap');
+    const itemWrap = document.getElementById('itemInputWrap');
+
+    if (svc.unit === 'item') {
+        areaWrap.style.display = 'none';
+        itemWrap.style.display = 'block';
+        renderItemOptions(svc);
+    } else {
+        areaWrap.style.display = 'block';
+        itemWrap.style.display = 'none';
+    }
+}
+
+function renderItemOptions(svc) {
+    const container = document.getElementById('itemOptionsContainer');
+
+    container.innerHTML = `
+        <div class="mb-2">
+            <label class="form-label">Nama Item</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="bk_itemName" 
+                   placeholder="Contoh: AC 1 PK, Sofa, Kitchen Set"
+                   required>
+        </div>
+    `;
+}
+
+// --- CART ---------------------------------------------------
+function addToCart() {
+    const id = parseInt(document.getElementById('bk_service').value);
+    const svc = services.find(s => s.id === id);
+
+    let detail, subtotal, qty;
+
+    if (svc.unit === 'm2') {
+        const area = parseFloat(document.getElementById('bk_area').value);
+        if (!area || area <= 0) { showToast('Masukkan luas area yang valid!', 'error'); return; }
+        detail = `${area} m²`;
+        subtotal = svc.price * area;
+        qty = area;
+    } else {
+        const nameEl = document.getElementById('bk_itemName');
+        const qtyEl = document.getElementById('bk_qty');
+        if (!nameEl || !nameEl.value.trim()) {
+        showToast('Masukkan nama item!', 'error');
+        return;
+    }
+    const qty = parseInt(qtyEl.value) || 1;
+    detail = `${nameEl.value} × ${qty}`;
+    subtotal = 0; //PRICE FIXED TO 0
+    }
+
+    cart.push({ id: svc.id, name: svc.name, detail, subtotal, unit: svc.unit });
+
+    if (svc.unit === 'm2') document.getElementById('bk_area').value = '';
+    renderCart();
+    showToast(`${svc.name} ditambahkan ke estimasi!`, 'success');
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
+function renderCart() {
+    const tbody = document.getElementById('cartBody');
+    const emptyRow = document.getElementById('emptyCartRow');
+
+    // Remove existing dynamic rows
+    tbody.querySelectorAll('.cart-row').forEach(r => r.remove());
+
+    if (cart.length === 0) {
+        if (emptyRow) emptyRow.style.display = '';
+    } else {
+        if (emptyRow) emptyRow.style.display = 'none';
+        cart.forEach((item, i) => {
+            const tr = document.createElement('tr');
+            tr.className = 'cart-row fade-in';
+            tr.innerHTML = `
+                <td class="fw-semibold" style="font-size:0.85rem">${item.name}</td>
+                <td style="font-size:0.82rem;color:var(--text-muted)">${item.detail}</td>
+                <td class="text-end fw-bold" style="color:var(--azure)">${formatRp(item.subtotal)}</td>
+                <td>
+                    <button class="btn btn-sm" style="color:#dc3545;background:none;border:none;padding:0.2rem 0.4rem" onclick="removeFromCart(${i})" title="Hapus">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+    updateTotal();
+}
+
+function updateTotal() {
+    const totalJasa = cart.reduce((s, i) => s + i.subtotal, 0);
+    const isHeavy = document.getElementById('bk_heavy').checked;
+    const extra = isHeavy ? totalJasa * 0.05 : 0;
+    const grand = totalJasa + extra;
+
+    document.getElementById('totalJasa').textContent = formatRp(totalJasa);
+    document.getElementById('grandTotal').textContent = formatRp(grand);
+
+    const extraRow = document.getElementById('extraFeeRow');
+    if (isHeavy && totalJasa > 0) {
+        extraRow.style.display = 'flex';
+        document.getElementById('extraFeeAmt').textContent = formatRp(extra);
+    } else {
+        extraRow.style.display = 'none';
+    }
+}
+
+// --- GENERATE INVOICE PDF -----------------------------------
+function generatePDF() {
+    if (cart.length === 0) { showToast('Tambahkan minimal 1 layanan terlebih dahulu!', 'error'); return; }
+
+    const name = document.getElementById('bk_name').value.trim() || 'Pelanggan Yth.';
+    const phone = document.getElementById('bk_phone').value.trim() || '-';
+    const address = document.getElementById('bk_address').value.trim() || '-';
+    const dateVal = document.getElementById('bk_date').value || new Date().toISOString().split('T')[0];
+    const notes = document.getElementById('bk_notes').value.trim();
+    const isHeavy = document.getElementById('bk_heavy').checked;
+
+    const invoiceNo = 'RK-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 90000) + 10000);
+    const dateFormatted = new Date(dateVal + 'T00:00:00').toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
+    const todayFormatted = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    const totalJasa = cart.reduce((s, i) => s + i.subtotal, 0);
+    const extra = isHeavy ? totalJasa * 0.05 : 0;
+    const grand = totalJasa + extra;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const W = 210; const margin = 18;
+
+    // Header background
+    doc.setFillColor(0, 127, 255);
+    doc.rect(0, 0, W, 42, 'F');
+
+    // Brand name
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(24);
+    doc.setTextColor(255, 255, 255);
+    doc.text('RUMAH KILAT', margin, 18);
+
+    doc.setFontSize(9.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(200, 230, 255);
+    doc.text('Where Precision Meets Perfection', margin, 25);
+    doc.text('Jl. Ahmad Yani No.15, Blimbing, Kota Malang, Jawa Timur 65126', margin, 30.5);
+    doc.text('WA: +62 857-9112-7578  |  info@rumahkilat.id', margin, 36);
+
+    // Invoice label (top-right)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(255, 255, 255);
+    doc.text('INVOICE', W - margin, 18, { align: 'right' });
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.text(invoiceNo, W - margin, 25, { align: 'right' });
+
+    // Invoice details box
+    let y = 52;
+    doc.setFillColor(245, 249, 255);
+    doc.roundedRect(margin, y, W - margin*2, 36, 3, 3, 'F');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(100, 100, 100);
+
+    doc.text('Tanggal Invoice:', margin + 4, y + 8);
+    doc.text('No. Invoice:', margin + 4, y + 15);
+    doc.text('Tanggal Booking:', margin + 4, y + 22);
+    doc.text('Kondisi:', margin + 4, y + 29);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(30, 30, 30);
+    doc.text(todayFormatted, margin + 45, y + 8);
+    doc.text(invoiceNo, margin + 45, y + 15);
+    doc.text(dateFormatted, margin + 45, y + 22);
+    doc.text(isHeavy ? 'Kondisi Berat (+5%)' : 'Normal', margin + 45, y + 29);
+    if (isHeavy) { doc.setTextColor(220, 100, 0); doc.text('  ⚠', margin + 85, y + 29); }
+
+    // Separator
+    y = 95;
+    doc.setDrawColor(0, 127, 255);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, W - margin, y);
+    y += 6;
+
+    // Billed To
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(0, 127, 255);
+    doc.text('TAGIHAN KEPADA', margin, y);
+    y += 6;
+    doc.setTextColor(30, 30, 30);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text(name, margin, y);
+    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(80, 80, 80);
+    doc.text(`Telepon  : ${phone}`, margin, y); y += 5;
+    doc.text(`Alamat   : ${address}`, margin, y); y += 5;
+    if (notes) { doc.text(`Catatan  : ${notes}`, margin, y); y += 5; }
+
+    y += 4;
+
+    // Items Table
+    const tableData = cart.map((item, i) => [
+        i + 1,
+        item.name,
+        item.detail,
+        formatRp(item.subtotal)
+    ]);
+
+    doc.autoTable({
+        startY: y,
+        head: [['#', 'Layanan', 'Detail / Volume', 'Subtotal']],
+        body: tableData,
+        theme: 'striped',
+        styles: {
+            font: 'helvetica',
+            fontSize: 9.5,
+            cellPadding: { top: 5, right: 5, bottom: 5, left: 5 },
+            textColor: [30, 30, 30]
+        },
+        headStyles: {
+            fillColor: [0, 127, 255],
+            textColor: 255,
+            fontStyle: 'bold',
+            fontSize: 9
+        },
+        alternateRowStyles: { fillColor: [245, 249, 255] },
+        columnStyles: {
+            0: { cellWidth: 10, halign: 'center' },
+            1: { cellWidth: 65 },
+            2: { cellWidth: 60 },
+            3: { cellWidth: 37, halign: 'right', fontStyle: 'bold' }
+        },
+        margin: { left: margin, right: margin }
+    });
+
+    let fy = doc.lastAutoTable.finalY + 5;
+
+    // Totals box
+    doc.setFillColor(245, 249, 255);
+    const boxH = isHeavy ? 32 : 24;
+    doc.roundedRect(W - margin - 75, fy, 75, boxH, 2, 2, 'F');
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9.5);
+    doc.setTextColor(80, 80, 80);
+    doc.text('Total Jasa:', W - margin - 70, fy + 8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(30, 30, 30);
+    doc.text(formatRp(totalJasa), W - margin - 2, fy + 8, { align: 'right' });
+
+    if (isHeavy) {
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(200, 100, 0);
+        doc.text('Biaya Kondisi Berat (5%):', W - margin - 70, fy + 15);
+        doc.setFont('helvetica', 'bold');
+        doc.text(formatRp(extra), W - margin - 2, fy + 15, { align: 'right' });
+        fy += 7;
+    }
+
+    doc.setDrawColor(0, 127, 255);
+    doc.setLineWidth(0.5);
+    doc.line(W - margin - 75, fy + 10, W - margin, fy + 10);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(0, 127, 255);
+    doc.text('TOTAL AKHIR', W - margin - 70, fy + 18);
+    doc.setFontSize(13);
+    doc.text(formatRp(grand), W - margin - 2, fy + 18, { align: 'right' });
+
+    // Payment info
+    fy = doc.lastAutoTable.finalY + (isHeavy ? 55 : 45);
+    if (fy > 240) fy = 240;
+
+    doc.setFillColor(0, 127, 255);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(255, 255, 255);
+    doc.roundedRect(margin, fy, W - margin*2, 8, 2, 2, 'F');
+    doc.text('INFORMASI PEMBAYARAN', margin + 4, fy + 5.5);
+
+    fy += 12;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(80, 80, 80);
+    doc.text('• DP sesuai kesepakatan dibayarkan sebelum pekerjaan dimulai', margin, fy); fy += 5;
+    doc.text('• Pelunasan dilakukan setelah pekerjaan selesai & quality check', margin, fy); fy += 5;
+    doc.text('• Transfer Bank / E-Wallet / Sesuai kebijakan Rumah Kilat', margin, fy); fy += 5;
+    doc.text('• Garansi berlaku sesuai kategori layanan dan level membership', margin, fy);
+
+    // Footer strip
+    const pageH = 297;
+    doc.setFillColor(15, 15, 15);
+    doc.rect(0, pageH - 14, W, 14, 'F');
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(8.5);
+    doc.setTextColor(180, 180, 180);
+    doc.text('Terima kasih telah mempercayakan hunian Anda kepada Rumah Kilat. Kepuasan Anda adalah prioritas utama kami.', W / 2, pageH - 5.5, { align: 'center' });
+
+    doc.save(`Invoice_RumahKilat_${invoiceNo}.pdf`);
+    showToast('Invoice PDF berhasil diunduh!', 'success');
+}
+
+// --- REVIEW FORM --------------------------------------------
+function toggleReviewForm() {
+    const wrap = document.getElementById('reviewFormWrap');
+    const isHidden = wrap.style.display === 'none' || wrap.style.display === '';
+    wrap.style.display = isHidden ? 'block' : 'none';
+    if (isHidden) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function populateReviewServiceChecks() {
+    const container = document.getElementById('rv_services_check');
+    container.innerHTML = services.map(s => `
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rv_svc${s.id}" value="${s.name}">
+            <label class="form-check-label" for="rv_svc${s.id}" style="font-size:0.82rem">${s.name}</label>
+        </div>
+    `).join('');
+}
+
+function initStarRating() {
+    const stars = document.querySelectorAll('#overallStar .star');
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            const val = parseInt(this.getAttribute('data-val'));
+            stars.forEach((s, i) => s.classList.toggle('hover', i < val));
+        });
+        star.addEventListener('mouseout', () => {
+            stars.forEach((s, i) => s.classList.toggle('active', i < reviewRating));
+            stars.forEach(s => s.classList.remove('hover'));
+        });
+        star.addEventListener('click', function() {
+            reviewRating = parseInt(this.getAttribute('data-val'));
+            document.getElementById('rv_rating').value = reviewRating;
+            stars.forEach((s, i) => {
+                s.classList.toggle('active', i < reviewRating);
+                s.classList.remove('hover');
+            });
+        });
+    });
+}
+
+function submitReview(e) {
+    e.preventDefault();
+    const name = document.getElementById('rv_name').value.trim();
+    const invoice = document.getElementById('rv_invoice').value.trim();
+    const mainText = document.getElementById('rv_main').value.trim();
+    const rating = parseInt(document.getElementById('rv_rating').value);
+
+    if (!name || !invoice || mainText.length < 30) {
+        showToast('Lengkapi semua field wajib (minimal 30 karakter ulasan)!', 'error');
+        return;
+    }
+    if (rating === 0) {
+        showToast('Berikan rating bintang terlebih dahulu!', 'error');
+        return;
+    }
+
+    const isPub = document.getElementById('rv_pub').checked;
+    const isAnon = document.getElementById('rv_anon').checked;
+    const displayName = isAnon ? 'Anonim' : name;
+    const starsStr = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+    if (isPub) {
+        const grid = document.getElementById('reviewGrid');
+        const col = document.createElement('div');
+        col.className = 'col-md-4 fade-in';
+        col.innerHTML = `
+            <div class="review-card h-100">
+                <div class="review-stars mb-3">${starsStr}</div>
+                <p style="font-size:0.9rem;font-style:italic;color:var(--text-muted)">"${mainText}"</p>
+                <hr style="border-color:var(--border-color);margin:1rem 0">
+                <div class="reviewer-name">${displayName}</div>
+                <div class="reviewer-service">Baru saja</div>
+            </div>
+        `;
+        grid.appendChild(col);
+    }
+
+    showToast('Terima kasih telah mempercayakan hunian Anda kepada Rumah Kilat!', 'success');
+    toggleReviewForm();
+    e.target.reset();
+    reviewRating = 0;
+    document.querySelectorAll('#overallStar .star').forEach(s => s.classList.remove('active', 'hover'));
+}
+
+// --- IMAGE PREVIEWS -----------------------------------------
+function previewHeroImage(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        const img = document.getElementById('heroImg');
+        img.src = e.target.result;
+        img.style.display = 'block';
+        document.getElementById('heroPlaceholder').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+}
+
+function previewGallery(input, idx) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        const img = document.getElementById(`galleryImg${idx}`);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        document.getElementById(`galleryPH${idx}`).style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+}
+
+function previewProductImage(input, serviceId) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        const img = document.getElementById(`prodImg${serviceId}`);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        document.getElementById(`prodPH${serviceId}`).style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+}
+
+// --- TOAST NOTIFICATION ------------------------------------
+function showToast(msg, type = 'success') {
+    const toast = document.getElementById('mainToast');
+    const msgEl = document.getElementById('toastMsg');
+    const iconEl = document.getElementById('toastIcon');
+    msgEl.textContent = msg;
+    iconEl.className = type === 'success'
+        ? 'fa-solid fa-circle-check text-azure fs-5'
+        : 'fa-solid fa-circle-exclamation text-warning fs-5';
+    new bootstrap.Toast(toast, { delay: 3500 }).show();
+}
+
+</script>
+</body>
+</html>
